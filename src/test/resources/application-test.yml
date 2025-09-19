@@ -1,0 +1,23 @@
+spring:
+  redis:
+    host: localhost
+    port: 6379
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+
+email:
+  handler:
+    imap:
+      host: test.example.com
+      username: test@example.com
+      password: testpass
+    smtp:
+      host: smtp.example.com
+      username: test@example.com
+      password: testpass
+      to-address: recipient@example.com
+    conversion-api:
+      base-url: http://localhost:8080
+    duplicate-prevention:
+      enabled: false
