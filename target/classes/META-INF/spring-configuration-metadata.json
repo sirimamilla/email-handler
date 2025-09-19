@@ -1,0 +1,243 @@
+{
+  "groups": [
+    {
+      "name": "email.handler",
+      "type": "com.email.handler.config.EmailHandlerProperties",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties"
+    },
+    {
+      "name": "email.handler.conversion-api",
+      "type": "com.email.handler.config.EmailHandlerProperties$ConversionApi",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties",
+      "sourceMethod": "getConversionApi()"
+    },
+    {
+      "name": "email.handler.duplicate-prevention",
+      "type": "com.email.handler.config.EmailHandlerProperties$DuplicatePrevention",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties",
+      "sourceMethod": "getDuplicatePrevention()"
+    },
+    {
+      "name": "email.handler.imap",
+      "type": "com.email.handler.config.EmailHandlerProperties$Imap",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties",
+      "sourceMethod": "getImap()"
+    },
+    {
+      "name": "email.handler.processing",
+      "type": "com.email.handler.config.EmailHandlerProperties$Processing",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties",
+      "sourceMethod": "getProcessing()"
+    },
+    {
+      "name": "email.handler.scaling",
+      "type": "com.email.handler.config.EmailHandlerProperties$Scaling",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties",
+      "sourceMethod": "getScaling()"
+    },
+    {
+      "name": "email.handler.scaling.work-distribution",
+      "type": "com.email.handler.config.EmailHandlerProperties$Scaling$WorkDistribution",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Scaling",
+      "sourceMethod": "getWorkDistribution()"
+    },
+    {
+      "name": "email.handler.smtp",
+      "type": "com.email.handler.config.EmailHandlerProperties$Smtp",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties",
+      "sourceMethod": "getSmtp()"
+    }
+  ],
+  "properties": [
+    {
+      "name": "email.handler.conversion-api.base-url",
+      "type": "java.lang.String",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$ConversionApi"
+    },
+    {
+      "name": "email.handler.conversion-api.endpoint",
+      "type": "java.lang.String",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$ConversionApi",
+      "defaultValue": "\/api\/audio-video\/convert"
+    },
+    {
+      "name": "email.handler.conversion-api.retry-attempts",
+      "type": "java.lang.Integer",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$ConversionApi",
+      "defaultValue": 3
+    },
+    {
+      "name": "email.handler.conversion-api.retry-delay",
+      "type": "java.lang.Long",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$ConversionApi",
+      "defaultValue": 5000
+    },
+    {
+      "name": "email.handler.conversion-api.timeout",
+      "type": "java.lang.Integer",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$ConversionApi",
+      "defaultValue": 300000
+    },
+    {
+      "name": "email.handler.duplicate-prevention.cache-duration",
+      "type": "java.lang.String",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$DuplicatePrevention",
+      "defaultValue": "24h"
+    },
+    {
+      "name": "email.handler.duplicate-prevention.enabled",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$DuplicatePrevention",
+      "defaultValue": true
+    },
+    {
+      "name": "email.handler.imap.fetch-interval",
+      "type": "java.lang.Long",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Imap",
+      "defaultValue": 5000
+    },
+    {
+      "name": "email.handler.imap.folder",
+      "type": "java.lang.String",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Imap",
+      "defaultValue": "INBOX"
+    },
+    {
+      "name": "email.handler.imap.host",
+      "type": "java.lang.String",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Imap"
+    },
+    {
+      "name": "email.handler.imap.max-messages-per-fetch",
+      "type": "java.lang.Integer",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Imap",
+      "defaultValue": 1
+    },
+    {
+      "name": "email.handler.imap.password",
+      "type": "java.lang.String",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Imap"
+    },
+    {
+      "name": "email.handler.imap.port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Imap",
+      "defaultValue": 993
+    },
+    {
+      "name": "email.handler.imap.ssl-enabled",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Imap",
+      "defaultValue": true
+    },
+    {
+      "name": "email.handler.imap.username",
+      "type": "java.lang.String",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Imap"
+    },
+    {
+      "name": "email.handler.processing.max-file-size",
+      "type": "java.lang.String",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Processing",
+      "defaultValue": "100MB"
+    },
+    {
+      "name": "email.handler.processing.queue-capacity",
+      "type": "java.lang.Integer",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Processing",
+      "defaultValue": 1000
+    },
+    {
+      "name": "email.handler.processing.supported-audio-formats",
+      "type": "java.lang.String",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Processing",
+      "defaultValue": "mp3,wav,m4a,aac,flac"
+    },
+    {
+      "name": "email.handler.processing.supported-video-formats",
+      "type": "java.lang.String",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Processing",
+      "defaultValue": "mp4,avi,mov,mkv,wmv"
+    },
+    {
+      "name": "email.handler.processing.thread-pool-size",
+      "type": "java.lang.Integer",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Processing",
+      "defaultValue": 10
+    },
+    {
+      "name": "email.handler.scaling.distributed-locking",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Scaling",
+      "defaultValue": true
+    },
+    {
+      "name": "email.handler.scaling.enable-leader-election",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Scaling",
+      "defaultValue": true
+    },
+    {
+      "name": "email.handler.scaling.instance-id",
+      "type": "java.lang.String",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Scaling"
+    },
+    {
+      "name": "email.handler.scaling.leader-election-timeout",
+      "type": "java.lang.String",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Scaling",
+      "defaultValue": "30s"
+    },
+    {
+      "name": "email.handler.scaling.lock-timeout",
+      "type": "java.lang.String",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Scaling",
+      "defaultValue": "10s"
+    },
+    {
+      "name": "email.handler.scaling.work-distribution.enabled",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Scaling$WorkDistribution",
+      "defaultValue": true
+    },
+    {
+      "name": "email.handler.scaling.work-distribution.fetch-coordination",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Scaling$WorkDistribution",
+      "defaultValue": true
+    },
+    {
+      "name": "email.handler.smtp.host",
+      "type": "java.lang.String",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Smtp"
+    },
+    {
+      "name": "email.handler.smtp.password",
+      "type": "java.lang.String",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Smtp"
+    },
+    {
+      "name": "email.handler.smtp.port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Smtp",
+      "defaultValue": 587
+    },
+    {
+      "name": "email.handler.smtp.starttls-enabled",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Smtp",
+      "defaultValue": true
+    },
+    {
+      "name": "email.handler.smtp.to-address",
+      "type": "java.lang.String",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Smtp"
+    },
+    {
+      "name": "email.handler.smtp.username",
+      "type": "java.lang.String",
+      "sourceType": "com.email.handler.config.EmailHandlerProperties$Smtp"
+    }
+  ],
+  "hints": []
+}

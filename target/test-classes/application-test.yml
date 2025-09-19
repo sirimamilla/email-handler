@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+  flyway:
+    enabled: false
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+      - org.redisson.spring.starter.RedissonAutoConfiguration
+
+email:
+  handler:
+    imap:
+      host: test.example.com
+      username: test@example.com
+      password: testpass
+    smtp:
+      host: smtp.example.com
+      username: test@example.com
+      password: testpass
+      to-address: recipient@example.com
+    conversion-api:
+      base-url: http://localhost:8080
+    duplicate-prevention:
+      enabled: false
+    scaling:
+      enable-leader-election: false
+      distributed-locking: false

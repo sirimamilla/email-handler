@@ -1,0 +1,110 @@
+# Spring Boot Configuration
+spring:
+  application:
+    name: email-handler
+  
+  # Database Configuration
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/emaildb}
+    username: ${DATABASE_USERNAME:emailhandler}
+    password: ${DATABASE_PASSWORD:password}
+    driverClassName: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+  
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 20
+        order_inserts: true
+        order_updates: true
+  
+  # Flyway for database migration
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+  
+  # Redis Configuration for caching and coordination
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:}
+    timeout: 2000ms
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 2
+
+# Email Handler Configuration
+email:
+  handler:
+    # IMAP Configuration
+    imap:
+      host: imap.example.com
+      port: 993
+      username: user@example.com
+      password: password
+      ssl-enabled: true
+      folder: INBOX
+      fetch-interval: 5000
+      max-messages-per-fetch: 1
+    
+    # SMTP Configuration for forwarding
+    smtp:
+      host: smtp.example.com
+      port: 587
+      username: forwarder@example.com
+      password: password
+      starttls-enabled: true
+      to-address: recipient@example.com
+    
+    # External API Configuration
+    conversion-api:
+      base-url: http://localhost:8080
+      endpoint: /api/audio-video/convert
+      timeout: 300000
+      retry-attempts: 3
+      retry-delay: 5000
+    
+    # Processing Configuration
+    processing:
+      thread-pool-size: 10
+      queue-capacity: 1000
+      supported-audio-formats: mp3,wav,m4a,aac,flac
+      supported-video-formats: mp4,avi,mov,mkv,wmv
+      max-file-size: 100MB
+    
+    # Duplicate Prevention
+    duplicate-prevention:
+      enabled: true
+      cache-duration: 24h
+    
+    # Horizontal Scaling Configuration
+    scaling:
+      instance-id: ${INSTANCE_ID:${random.uuid}}
+      enable-leader-election: true
+      leader-election-timeout: 30s
+      distributed-locking: true
+      lock-timeout: 10s
+      work-distribution:
+        enabled: true
+        fetch-coordination: true
+      
+# Logging Configuration
+logging:
+  level:
+    com.email.handler: INFO
+    org.springframework.mail: DEBUG
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
