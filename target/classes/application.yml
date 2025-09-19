@@ -1,0 +1,84 @@
+# Spring Boot Configuration
+spring:
+  application:
+    name: email-handler
+  
+  # Database Configuration
+  datasource:
+    url: jdbc:h2:mem:emaildb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+  
+  h2:
+    console:
+      enabled: true
+  
+  # Redis Configuration
+  redis:
+    host: localhost
+    port: 6379
+    timeout: 2000ms
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+
+# Email Handler Configuration
+email:
+  handler:
+    # IMAP Configuration
+    imap:
+      host: imap.example.com
+      port: 993
+      username: user@example.com
+      password: password
+      ssl-enabled: true
+      folder: INBOX
+      fetch-interval: 5000
+      max-messages-per-fetch: 1
+    
+    # SMTP Configuration for forwarding
+    smtp:
+      host: smtp.example.com
+      port: 587
+      username: forwarder@example.com
+      password: password
+      starttls-enabled: true
+      to-address: recipient@example.com
+    
+    # External API Configuration
+    conversion-api:
+      base-url: http://localhost:8080
+      endpoint: /api/audio-video/convert
+      timeout: 300000
+      retry-attempts: 3
+      retry-delay: 5000
+    
+    # Processing Configuration
+    processing:
+      thread-pool-size: 10
+      queue-capacity: 1000
+      supported-audio-formats: mp3,wav,m4a,aac,flac
+      supported-video-formats: mp4,avi,mov,mkv,wmv
+      max-file-size: 100MB
+    
+    # Duplicate Prevention
+    duplicate-prevention:
+      enabled: true
+      cache-duration: 24h
+      
+# Logging Configuration
+logging:
+  level:
+    com.email.handler: INFO
+    org.springframework.mail: DEBUG
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
